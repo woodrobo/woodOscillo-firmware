@@ -131,7 +131,7 @@ int main ( void )
             switch(oscillo_mode){
                 case 0://trigger準備
                     tmp = *CH1_ADDR & 0x0fff;
-                    vol = tmp * 3.3 / 1024;
+                    vol = tmp * 3.3 / 4096.0;
                     if(is_trig_fall){
                         if(vol > trig_level){
                             oscillo_mode = 1;
@@ -144,7 +144,7 @@ int main ( void )
                     break;
                 case 1://trigger本番
                     tmp = *CH1_ADDR & 0x0fff;
-                    vol = tmp * 3.3 / 1024;
+                    vol = tmp * 3.3 / 4096.0;
                     if(is_trig_fall){
                         if(vol < trig_level){
                             voltage_buf[0][voltage_buf_counter] = tmp;
